@@ -1,18 +1,22 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import "./NavBar.css"
+import logo from "./logo-small.png"
 
 export const NavBar = (props) => {
     return (
         <ul className="navbar">
             <li className="navbar__item">
-                Navigation link
+                <img src={logo} alt="levelup logo" className="logo" />
             </li>
             <li className="navbar__item">
-                Navigation link
+                <Link className="nav-link" to="/">Games</Link>
             </li>
             <li className="navbar__item">
-                Navigation link
+                <Link className="nav-link" to="/events">Events</Link>
+            </li>
+            <li className="navbar__item">
+                <Link className="nav-link" to="/profile">User Profile</Link>
             </li>
             {
                 (localStorage.getItem("lu_token") !== null) ?

@@ -4,6 +4,10 @@
     justify-content: left;
 }
 
+.logo {
+    width: 9rem;
+}
+
 .navbar__item {
     flex-basis: 20%;
     list-style-type: none;
