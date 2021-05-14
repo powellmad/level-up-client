@@ -1,0 +1,26 @@
+.games {
+    margin: auto;
+    padding: 8px;    
+    background-color: rgb(227, 244, 255);
+}
+
+/* .games {   
+    background-size: cover;
+    background-position-x: center;
+    background-image: url('../auth/logo.png');
+    z-index: 1;
+    min-height: 25rem;
+    min-width: 45rem;
+    padding: 0 5rem;
+    background-color: hsla(0,0%,100%,0.75);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+} */
+
+.games h1 {
+    text-align: center;
+}
+
+.game {
+    padding: 10px;
+}

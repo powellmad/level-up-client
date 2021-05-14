@@ -1,0 +1,12 @@
+.events {
+    padding: 20px;
+    background-color: aliceblue;
+}
+
+.events h1 {
+    text-align: center;
+}
+
+.event {
+    padding: 10px;
+}

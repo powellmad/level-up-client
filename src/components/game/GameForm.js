@@ -2,7 +2,6 @@ import React, { useContext, useState, useEffect } from "react"
 import { GameContext } from "./GameProvider.js"
 import { useHistory } from 'react-router-dom'
 
-
 export const GameForm = () => {
     const history = useHistory()
     const { createGame, getGameTypes, gameTypes } = useContext(GameContext)
@@ -13,10 +12,9 @@ export const GameForm = () => {
         provide some default values.
     */
     const [currentGame, setCurrentGame] = useState({
-        skillLevel: 1,
-        numberOfPlayers: 0,
         title: "",
-        maker: "",
+        instructions: "",
+        max_players: 0,
         gameTypeId: 0
     })
 
@@ -40,33 +38,39 @@ export const GameForm = () => {
     */
     const changeGameTitleState = (event) => {
         const newGameState = { ...currentGame }
-        newGameState.title = event.target.value
+        newGameState.event.target.name = event.target.value
         setCurrentGame(newGameState)
     }
 
-    const changeGameMakerState = (event) => {
-        const newGameState = { ...currentGame }
-        newGameState.maker = event.target.value
-        setCurrentGame(newGameState)
-    }
+    // const changeGameTitleState = (event) => {
+    //     const newGameState = { ...currentGame }
+    //     newGameState.title = event.target.value
+    //     setCurrentGame(newGameState)
+    // }
 
-    const changeGamePlayersState = (event) => {
-        const newGameState = { ...currentGame }
-        newGameState.numberOfPlayers = event.target.value
-        setCurrentGame(newGameState)
-    }
+    // const changeGameMakerState = (event) => {
+    //     const newGameState = { ...currentGame }
+    //     newGameState.maker = event.target.value
+    //     setCurrentGame(newGameState)
+    // }
 
-    const changeGameSkillLevelState = (event) => {
-        const newGameState = { ...currentGame }
-        newGameState.skillLevel = event.target.value
-        setCurrentGame(newGameState)
-    }
+    // const changeGamePlayersState = (event) => {
+    //     const newGameState = { ...currentGame }
+    //     newGameState.numberOfPlayers = event.target.value
+    //     setCurrentGame(newGameState)
+    // }
 
-    const changeGameTypeState = (event) => {
-        const newGameState = { ...currentGame }
-        newGameState.gameTypeId = event.target.value
-        setCurrentGame(newGameState)
-    }
+    // const changeGameSkillLevelState = (event) => {
+    //     const newGameState = { ...currentGame }
+    //     newGameState.skillLevel = event.target.value
+    //     setCurrentGame(newGameState)
+    // }
+
+    // const changeGameTypeState = (event) => {
+    //     const newGameState = { ...currentGame }
+    //     newGameState.gameTypeId = event.target.value
+    //     setCurrentGame(newGameState)
+    // }
     /* REFACTOR CHALLENGE END */
 
     return (
@@ -90,10 +94,9 @@ export const GameForm = () => {
                     evt.preventDefault()
 
                     const game = {
-                        maker: currentGame.maker,
                         title: currentGame.title,
-                        numberOfPlayers: parseInt(currentGame.numberOfPlayers),
-                        skillLevel: parseInt(currentGame.skillLevel),
+                        instructions: currentGame.instructions,
+                        max_players: parseInt(currentGame.numberOfPlayers),
                         gameTypeId: parseInt(currentGame.gameTypeId)
                     }
 

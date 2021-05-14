@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from "react"
 import { EventContext } from "./EventProvider.js"
+import "./Event.css"
 
 export const EventList = (props) => {
     const { events, getEvents } = useContext(EventContext)
@@ -15,9 +16,9 @@ export const EventList = (props) => {
             </header>
             {
                 events.map(event => {
-                    return <section key={event.id} className="registration">
-                        <div className="registration__game">{event.game.title}</div>
+                    return <section key={event.id} className="event">
                         <div>{event.description}</div>
+                        <div className="event__game">{event.game.title}</div>
                         <div>
                             {
                                 new Date(event.date).toLocaleDateString("en-US",
