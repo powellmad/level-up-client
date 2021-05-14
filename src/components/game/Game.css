@@ -1,7 +1,7 @@
-.games {
+.games, .gameForm {
     margin: auto;
-    padding: 8px;    
-    background-color: rgb(227, 244, 255);
+    padding: 0 8px;    
+    background-color:aliceblue;
 }
 
 /* .games {   
@@ -23,4 +23,12 @@
 
 .game {
     padding: 10px;
+    border: 2pt rgb(240, 111, 144) solid;
+    background-color: white;
+    margin: 8px;
+    width: 50%;
+}
+
+.game__title {
+    font-size: 16pt;
 }
