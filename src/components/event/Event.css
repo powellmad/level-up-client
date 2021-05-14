@@ -1,6 +1,7 @@
-.events {
-    padding: 20px;
-    background-color: aliceblue;
+.events, .eventForm {
+    margin: auto;
+    padding: 0 8px;    
+    background-color:aliceblue;
 }
 
 .events h1 {
@@ -9,4 +10,12 @@
 
 .event {
     padding: 10px;
+    border: 2pt rgb(240, 111, 144) solid;
+    background-color: white;
+    margin: 8px;
+    width: 50%;
+}
+
+.event__description {
+    font-size: 16pt;
 }

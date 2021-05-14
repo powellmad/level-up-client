@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react"
 import { GameContext } from "./GameProvider.js"
 import { useHistory } from 'react-router-dom'
+import "./Game.css"
 
 export const GameForm = () => {
     const history = useHistory()
@@ -26,52 +27,12 @@ export const GameForm = () => {
         getGameTypes()
     }, [])
 
-    /*
-        REFACTOR CHALLENGE START
-
-        Can you refactor this code so that all property
-        state changes can be handled with a single function
-        instead of five functions that all, largely, do
-        the same thing?
-
-        One hint: [event.target.name]
-    */
-    const changeGameTitleState = (event) => {
+    const changeGameState = (event) => {
         const newGameState = { ...currentGame }
-        newGameState.event.target.name = event.target.value
+        newGameState[event.target.name] = event.target.value
         setCurrentGame(newGameState)
     }
 
-    // const changeGameTitleState = (event) => {
-    //     const newGameState = { ...currentGame }
-    //     newGameState.title = event.target.value
-    //     setCurrentGame(newGameState)
-    // }
-
-    // const changeGameMakerState = (event) => {
-    //     const newGameState = { ...currentGame }
-    //     newGameState.maker = event.target.value
-    //     setCurrentGame(newGameState)
-    // }
-
-    // const changeGamePlayersState = (event) => {
-    //     const newGameState = { ...currentGame }
-    //     newGameState.numberOfPlayers = event.target.value
-    //     setCurrentGame(newGameState)
-    // }
-
-    // const changeGameSkillLevelState = (event) => {
-    //     const newGameState = { ...currentGame }
-    //     newGameState.skillLevel = event.target.value
-    //     setCurrentGame(newGameState)
-    // }
-
-    // const changeGameTypeState = (event) => {
-    //     const newGameState = { ...currentGame }
-    //     newGameState.gameTypeId = event.target.value
-    //     setCurrentGame(newGameState)
-    // }
-    /* REFACTOR CHALLENGE END */
 
     return (
         <form className="gameForm">
@@ -81,8 +42,29 @@ export const GameForm = () => {
                     <label htmlFor="title">Title: </label>
                     <input type="text" name="title" required autoFocus className="form-control"
                         value={currentGame.title}
-                        onChange={changeGameTitleState}
+                        onChange={changeGameState}
                     />
+                    <label htmlFor="instructions">How to Play: </label>
+                    <input type="text" name="instructions" required autoFocus className="form-control"
+                        value={currentGame.instructions}
+                        onChange={changeGameState}
+                    />
+                    <label htmlFor="max_players">How Many Players: </label>
+                    <input type="text" name="max_players" required autoFocus className="form-control"
+                        value={currentGame.max_players}
+                        onChange={changeGameState}
+                    />
+                    <label htmlFor="gameTypeId">Game Type: </label>
+                    <select name="gameTypeId" className="form-control"
+                        value={currentGame.gameTypeId}
+                        onChange={changeGameState}>
+                        <option value="0">Select a game...</option>
+                        {
+                            gameTypes.map(gametype => (
+                                <option>{gametype.label}</option>
+                            ))
+                        }
+                    </select>
                 </div>
             </fieldset>
 
@@ -96,13 +78,13 @@ export const GameForm = () => {
                     const game = {
                         title: currentGame.title,
                         instructions: currentGame.instructions,
-                        max_players: parseInt(currentGame.numberOfPlayers),
+                        max_players: parseInt(currentGame.max_players),
                         gameTypeId: parseInt(currentGame.gameTypeId)
                     }
 
                     // Send POST request to your API
                     createGame(game)
-                        .then(() => history.push("/games"))
+                        .then(() => history.push("/"))
                 }}
                 className="btn btn-primary">Create</button>
         </form>
